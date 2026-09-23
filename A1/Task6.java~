@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+public class Task6{
+  public static void main(String[]args) throws IOException{
+    BufferedReader bf= new BufferedReader(new InputStreamReader(System.in));
+    PrintWriter pw= new PrintWriter(System.out);
+  
+   int t= Integer.parseInt(bf.readLine());
+    int n= Integer.parseInt(bf.readLine());
+   StringTokenizer id= new StringTokenizer(bf.readLine());
+   StringTokenizer mrk= new StringTokenizer(bf.readLine());
+    int arrm=new int[n];
+      int arrid=new int[n];
+      int count=0;
+   for(int i=0;i<t;i++){
+     for(int j=0;j<n;j++){
+       arrid[j]=Integer.parseInt(id.nextToken());
+       arrm[j]=Integer.parseInt(mrk.nextToken());
+     }
+       boolean swapdone= true;
+    while(swapdone){
+     swapdone= false;
+     for(int k=0;k<n-1;k++){
+       if(arrm[k]<arrm[k+1]){
+         int temp= arrm[k+1];
+         arrm[k+1]=arr[k];
+         arrm[k]=temp;
+         
+         int temp1=arrid[k+1];
+         arrid[k+1]=arrid[k];
+         arrid[k]=temp1;
+         swapdone= true;
+         count++;
+       }
+     else if(arrm[k]==arrm[k+1]){
+       if(arrid[k]>arrid[k+1]){
+          int tempoo=arrid[k];
+         arrid[k]=arrid[k+1];
+         arrid[k+1]=tempoo;
+         swapdone= true;
+         count++;
+     }
+     }
+     }
+    }
+    pw.println("Minimum swaps: "+ count);
+    for(int l=0;l<n;l++){
+         pw.println("ID: "+arrid[l]+" Mark: "+arrm[l]);
+    }
+   }
+   pw.flush();
+  }
+}
+       
+       
+       
+       
+       
+       
+       
+     
